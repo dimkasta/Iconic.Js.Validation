@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "target": "es5",
+    "sourceMap": true,
+    "outFile": "IconicJsValidation.js"
+  },
+  "files": [
+    "Iconic.Js.Validation.ts",
+    "IconicJsValidationMessage.ts",
+    "IconicJsValidationPattern.ts",
+    "IconicJsValidationRule.ts",
+    "IconicJsValidationUsernameRule.ts",
+    "IconicJsValidationEmailRule.ts",
+    "IconicJsValidationAlphanumericRule.ts",
+    "IconicJsValidationPhoneRule.ts",
+    "IconicJsValidationPostalCodeRule.ts",
+    "IconicJsValidationPasswordRule.ts",
+    "IconicJsValidationPasswordCheckRule.ts",
+    "IconicJsValidationRecaptchaRule.ts"
+  ]
+}

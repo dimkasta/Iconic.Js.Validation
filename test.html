@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.js"></script>
+
+<script src="IconicJsValidation.js" ></script>
+
+<form id="form">
+    <fieldset>
+        <legend>Please provide your name, email address (won't be published) and a comment</legend>
+        <p>
+            <label for="cname">Name (required, at least 2 characters)</label>
+            <input id="cname" name="name" minlength="2" type="text" required>
+        </p>
+        <p>
+            <label for="cemail">E-Mail (required)</label>
+            <input id="cemail" type="email" name="email" required>
+        </p>
+        <p>
+            <label for="curl">URL (optional)</label>
+            <input id="curl" type="url" name="url">
+        </p>
+        <p>
+            <label for="ccomment">Your comment (required)</label>
+            <textarea id="ccomment" name="comment" required></textarea>
+        </p>
+        <p>
+            <input class="submit" type="submit" value="Submit">
+        </p>
+    </fieldset>
+</form>
+
+<script>
+
+    $(function() {
+        var usernameRules = new IconicJsValidationUsernameRule(7, debug);
+        var emailRules = new IconicJsValidationEmailRule(debug);
+
+        var formValidator = $("#form").validate(
+            {
+            rules: {
+                "name": usernameRules.Rules,
+                "email": emailRules.Rules
+            },
+            messages: {
+                "name": usernameRules.Messages,
+                "email": emailRules.Messages
+            }
+            }
+            );
+
+//        $.validator.addMethod("name", $.validator.methods.minlength, 9, $.validator.format("asad {0}"));
+
+
+    });
+
+    var debug = true;
+
+    var rules = new IconicJsValidationRule(debug);
+    rules.addRule("required", true, IconicJsValidationMessage.REQUIRED);
+    rules.addRule("minlength", 7, IconicJsValidationMessage.MINLENGTH);
+
+
+
+
+
+    var alphaRule = new IconicJsValidationAlphanumericRule(false, debug);
+
+    var ralphaRule = new IconicJsValidationAlphanumericRule(true, debug);
+
+    var phoneRule = new IconicJsValidationPhoneRule(false, debug);
+
+    var rphoneRule = new IconicJsValidationPhoneRule(true, debug);
+
+    var pcRule = new IconicJsValidationPostalCodeRule(false, debug);
+
+    var rpcRule = new IconicJsValidationPostalCodeRule(true, debug);
+
+    var passRule = new IconicJsValidationPasswordRule(7, debug);
+
+    var passcRule = new IconicJsValidationPasswordCheckRule(7, "passfieldid", debug);
+
+    // mock form for recaptcha
+    var f = document.createElement("form");
+
+    // mocking unchecked grecaptcha
+    var grecaptcha = {
+        getResponse: function() {
+            return false;
+        }
+    };
+
+    var recaptchaRule = new IconicJsValidationRecaptchaRule(f, debug);
+
+    // mocking checked recaptcha
+    grecaptcha = {
+        getResponse: function() {
+            return true;
+        }
+    };
+
+    recaptchaRule = new IconicJsValidationRecaptchaRule(f, debug);
+
+</script>
+</body>
+</html>
