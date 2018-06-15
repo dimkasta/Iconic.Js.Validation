@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finance</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form id="form" class="form">
+                <div class="form-group">
+                    <label>
+                        amount
+                    </label>
+                    <input name="amount" class="form-control" type="text" id="amount" value="28990">
+                </div>
+                <div class="form-group">
+                    <label>
+                        advance
+                    </label>
+                    <input name="advance" class="form-control" type="text" id="advance" value="10000">
+                </div>
+                <div class="form-group">
+                    <label>
+                        rate
+                    </label>
+                    <input name="rate" class="form-control" type="text" id="rate" value="1">
+                </div>
+                <div class="form-group">
+                    <label>
+                        payments
+                    </label>
+                    <input name="payments" class="form-control" type="text" id="payments" value="60">
+                </div>
+                <div class="form-group">
+                    <label>
+                        payment
+                    </label>
+                    <input name="payment" class="form-control" type="text" id="payment" value="">
+                </div>
+                <div class="form-group">
+                    <label>
+                        required
+                    </label>
+                    <input name="required" class="form-control" type="text" id="required" required="required" value="">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" type="submit" value="submit">Submit</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="web/js/base.js"></script>
+<script type="text/javascript" src="web/js/validation.js"></script>
+<script>
+    $(function () {
+        //mocking recaptcha
+        var grecaptcha = {
+            getResponse: function () {
+                return false;
+            }
+        };
+
+        FinanceCalculator.init("#amount", "#advance", "#rate", "#payments", "#payment");
+        Validation.init("form", grecaptcha);//, true);
+        Validation.addRule("required", Validation.getRequiredRule());
+        // Validation.addRule("required", Validation.getAlphaNumericRule());
+        Validation.addRule("required", Validation.getMinimumLengthRule(5));
+        // Validation.addRule("required", Validation.getEmailRule());
+        // Validation.addRule("required", Validation.getPasswordVerificationRule("rate"));
+        Validation.addRule("required", Validation.getMaximumLengthRule(5));
+        Validation.addRule("required", Validation.getDigitRule());
+
+
+    });
+
+</script>
+
+
+</body>
+</html>

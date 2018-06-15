@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance</title>
+
+</head>
+<body>
+<input type="text" id="amount" value="28990">
+<input type="text" id="advance" value="10000">
+<input type="text" id="rate" value="1">
+<input type="text" id="payments" value="60">
+<input type="text" id="payment" value="">
+<script>
+    $(function(){
+        FinanceCalculator.init("#amount", "#advance", "#rate", "#payments", "#payment");
+    });
+
+</script>
+<!--<script src="web/js/entry.bundle.js"></script>-->
+</body>
+</html>
